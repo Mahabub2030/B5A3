@@ -4,7 +4,6 @@ import { borrowBookService, getBorrowedBooksSummaryService } from "./borrow.serv
 const borrowBook = async (req: Request, res: Response) => {
   try {
     const { book, quantity, dueDate } = req.body;
-
     const borrow = await borrowBookService.borrowBook(
       book,
       quantity,
