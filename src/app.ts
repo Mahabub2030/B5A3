@@ -1,7 +1,6 @@
 import express, { Application, Request, Response } from "express";
 
 
-import { bookRoutes } from "./app/models/book/book.route";
 import { router } from "./app/router";
 const app: Application = express();
 

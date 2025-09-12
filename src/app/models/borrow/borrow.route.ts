@@ -1,8 +1,6 @@
 import express from "express";
 import { borrowControl } from "./borrow.controller";
 
-
-
 const router = express.Router();
 
 router.post("/",borrowControl.borrowBook)
