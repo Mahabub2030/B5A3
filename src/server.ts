@@ -1,20 +1,19 @@
-import { Server } from "http";
-import app from "./app";
-import { envVars } from "./app/config/env";
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
-let server: Server;
-const startServer = async () => {
+import app from "./app";
+import config from "./config";
+
+const server = async () => {
   try {
-    await mongoose.connect(envVars.DB_URL);
-    console.log("Connected to mongoDB");
-    server = app.listen(envVars.PORT, () => {
-      console.log(`libairy is listeing on port ${envVars.PORT}`);
+    await mongoose.connect(config.database_url!);
+    console.log("Database connected successfully");
+    app.listen(config.port, () => {
+      console.log(`Server is running on http://localhost:${config.port}`);
     });
   } catch (error) {
-    console.log(error);
+    console.error("Database connection error:", error);
+    process.exit(1); // Exit the process with failure
   }
 };
-(async () => {
-  await startServer();
-})();
+
+server();
