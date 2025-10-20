@@ -1,20 +1,14 @@
 import cors from "cors";
 import express, { Request, Response } from "express";
+import routes from "./routes";
 
-import mongoose from "mongoose";
-import { bookRoute } from "./modules/book/book.route";
-import borrowBookRoute from "./modules/borrow/borrow.route";
-
-const app = express();
+export const app = express();
 
 //middleware
-app.use(cors());
-app.use(express.json());
+app.use([cors(), express.json()]);
 
 //routes
-
-app.use("/books", bookRoute);
-app.use("/borrow", borrowBookRoute);
+app.use(routes);
 
 app.get("/", (req: Request, res: Response) => {
   res.send({
@@ -22,15 +16,3 @@ app.get("/", (req: Request, res: Response) => {
     message: "This is Library Management API",
   });
 });
-let isConnected = false;
-export const connectDB = async () => {
-  if (isConnected) return;
-  try {
-    await mongoose.connect(process.env.DATABASE_URL!);
-    console.log("MongoDB connected (serverless)");
-    isConnected = true;
-  } catch (err) {
-    console.error("MongoDB connection failed:", err);
-  }
-};
-export default app;

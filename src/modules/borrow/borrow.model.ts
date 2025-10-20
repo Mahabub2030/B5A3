@@ -1,6 +1,6 @@
 import { HydratedDocument, model, Schema } from "mongoose";
-import { IBorrow } from "./borrow.interface";
 import Book from "../book/book.model";
+import { IBorrow } from "./borrow.interface";
 
 const borrowSchema = new Schema<IBorrow>(
   {

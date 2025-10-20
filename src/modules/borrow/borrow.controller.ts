@@ -1,11 +1,9 @@
 import { Request, Response } from "express";
-import { connectDB } from "../../app";
 import Book from "../book/book.model";
 import Borrow from "./borrow.model";
 
 const createBorrowBook = async (req: Request, res: Response): Promise<void> => {
   try {
-    await connectDB();
     const { book, quantity, dueDate } = req.body;
 
     const findBook = await Book.findById(book);
@@ -48,7 +46,6 @@ const createBorrowBook = async (req: Request, res: Response): Promise<void> => {
 
 const getBorrowedBooks = async (req: Request, res: Response) => {
   try {
-    await connectDB();
     const data = await Borrow.aggregate([
       {
         $group: {

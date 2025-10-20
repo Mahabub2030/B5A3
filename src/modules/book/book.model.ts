@@ -47,11 +47,6 @@ const bookSchema = new Schema<IBook, UpdateAvailabilityMethod>(
       type: Boolean,
       default: true,
     },
-    image: {
-      type: String,
-      required: [true, "image must be required"],
-      trim: true,
-    },
   },
   {
     versionKey: false,
@@ -79,19 +74,6 @@ bookSchema.static(
     }
   }
 );
-
-bookSchema.pre("findOneAndUpdate", async function (next) {
-  const update: any = this.getUpdate();
-
-  if (update?.copies === 0) {
-    update.available = false;
-  }
-  if (update?.copies > 0) {
-    update.available = true;
-  }
-  this.setUpdate(update);
-  next();
-});
 
 const Book = model<IBook, UpdateAvailabilityMethod>("Book", bookSchema);
 export default Book;
