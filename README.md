@@ -38,12 +38,12 @@ https://l2-b5-library-management-api.vercel.app/
 
 ```
 
-git clone https://github.com/MukitHossen7/L2B5-Library-Management-API-With-Mongoose.git
+git clone https://github.com/Mahabub2030/B5A3.git
 
 ```
 
 ```
-cd L2B5-Library-Management-Server
+cd L2B5-Library-Management-API-With-Mongoose
 ```
 
 ```
@@ -219,21 +219,3 @@ Response Body:
   }
 }
 ```
-
----
-
-## Dependencies
-
-- "cors": "^2.8.5",
-- "dotenv": "^16.5.0",
-- "express": "^5.1.0",
-- "mongoose": "^8.16.0",
-- "ts-node-dev": "^2.0.0"
-
----
-
-## DevDependencies
-
-- "@types/cors": "^2.8.19",
-- "@types/express": "^5.0.3",
-- "typescript": "^5.8.3"
